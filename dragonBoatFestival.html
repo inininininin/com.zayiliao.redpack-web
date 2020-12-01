@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>忠安医疗端午红包</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<script src="js/common.js"></script>
+		<link rel="stylesheet" href="css/common.css">
+		<!-- <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script> -->
+		
+		<script src="js/jquery-1.11.1.min.js"></script>
+		
+		<style>
+			@font-face {
+			    font-family: 'FZCQJW';
+			    src:url('css/FZCQJW.TTF') format('truetype')
+			} 
+			html, body { height: 100%; padding: 0;margin: 0;box-sizing: border-box;}
+			
+			.mainbox{
+							width: 100%;
+							height: 100%;
+							background: url('img/bg2.jpg') no-repeat;
+							background-size: cover;
+							background-position: center;
+							box-sizing: border-box;
+						}
+						h2{
+							/* width: 392; */
+							height: 1.04rem;
+							font-size: 28px;
+							font-family: PingFangSC, PingFangSC-Regular;
+							font-weight: 400;
+							text-align: left;
+							color: #fdcb55;
+							line-height: 1.2rem;
+							padding-top: 1.066666rem;
+							margin: 0 1.52rem;
+						}
+						.mainbox>p{
+							margin-top: 0.4rem;
+							/* height: 4.4rem; */
+							font-size: 23px;
+							font-family: PingFangSC, PingFangSC-Regular;
+							font-weight: 400;
+							text-align: left;
+							color: #fdcb55;
+							line-height: 0.8rem;
+							letter-spacing: 0.5px;
+							margin-left: 1.52rem;
+						}
+						.videoBox{
+							width: 78%;
+							height: ;
+							margin: 0.8rem auto;
+							background: #FDCB55;
+							border-radius: 0.133333rem;
+							box-sizing: border-box;
+							padding: 0.266666rem;
+							/* padding-top: 3px; */
+						}
+						.videoBox .videoBoxdiv{
+							box-sizing: border-box;
+							width: 100%;
+							height: 100%;
+							/* height: 90%; */
+							/* margin-top: 2%; */
+							/* margin-left: 3%; */
+							vertical-align: middle;
+							background: #fff;
+							border-radius: 0.133333rem;
+						}
+						.moneyBox{
+							color: #FDCB55;
+						}
+						.moneyBox p:nth-child(1){
+							height: 1.466666rem;
+							font-size: 23px;
+							font-family: FZCQJW;
+							text-align: left;
+							color: #fdcb55;
+							line-height: 1.466666rem;
+							letter-spacing: 1px;
+							margin:0 0 0 1.52rem;
+						}
+						.moneyBox p:nth-child(2){
+							font-size: 1.76rem;
+							line-height: 1.76rem;
+							margin:0 0 0 2.8rem;
+							height: 1.76rem;
+							font-family: FZCQJW;
+							letter-spacing: 0.04rem;
+						}
+						.moneyBox p:nth-child(2) span{
+							font-size: 23px;
+							/* vertical-align: middle; */
+							/* line-height: 100px; */
+						}
+			</style>
+	</head>
+	<body>
+		<div class="mainbox">
+			<h2>忠安医疗祝您：</h2>
+			<p>
+				事业像龙舟一样快进；<br>家庭像香包一样温馨；<br>个性像粽叶一样飘逸；<br>气势像雄黄一样劲霸；<br>快乐像糯米一样粘上就<br>不掉！端午节快乐。
+			</p>
+			<div class="videoBox" style="display: none;">
+				<div class="videoBoxdiv"></div>
+			</div>
+			<div class="moneyBox">
+				<p>恭喜您获得</p>
+				<p class="money"></p>
+				<!-- <p class="money">288<span>元</span></p> -->
+			</div>
+		</div>
+		<script>
+			var width=$('.videoBox').width()
+			$('.videoBox').css('height',width*0.59+'px')
+			$('.money').html(GetQueryString('money')+'<span>元</span>')
+			// var width1=$('.videoBoxdiv').width()
+			// console.log(width,width1)
+			// $('.videoBoxdiv').css('height',width1*0.59+'px')
+			
+		</script>
+		
+		
+		
+		
+	</body>
+</html>

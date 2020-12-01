@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>忠安医疗端午红包</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/common.js"></script>
+		<link rel="stylesheet" href="css/common.css">
+		<!-- <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script> -->
+		<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<style>
+			html,
+			body {
+				height: 100%;
+				padding: 0;
+				margin: 0;
+			}
+
+			.mainred {
+				width: 100%;
+				height: 100%;
+				background: url('img/bg.jpg') no-repeat;
+				background-size: cover;
+				background-position: center;
+			}
+
+			/* .mainred img{
+				width: 30%;
+				margin: 130% 35% 0;
+			} */
+			.popwindow{
+				display: none;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				background: rgba(0,0,0,0.5);
+				position: fixed;
+				z-index: 2;
+			}
+			.popwindow img{
+				width: 10%;
+				/* height: 80px; */
+				margin-left:45%;
+				margin-top: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="popwindow">
+			<img src="img/loading.png" alt="">
+		</div>
+		<div class="mainred">
+			<!-- <img src="img/money.png" alt=""> -->
+		</div>
+		<script>
+			
+			// alert(GetQueryString('id'))
+			// if( GetQueryString('id') ){
+			// 	var id= GetQueryString('id') 
+			// }
+
+			$('.mainred').click(function() {
+				// alert('2021001167681767')
+				$('.popwindow').css('display','block')
+				ap.getAuthCode({
+					appId: '2021001167681767',
+					scopes: ['auth_user'],
+				}, function(res) {
+					// ap.alert('1111=' + res)
+					// ap.alert('2222=' + JSON.stringify(res));
+					var authCode = res.authCode
+					// ap.alert('3333=' + authCode)
+					$.ajax({
+						url: '/redpack/login-by-alipay-auth-code',
+						type: 'post',
+						async: false,
+						data: 'authCode=' + authCode,
+						success: function(res) {
+							// alert('4444=' + res.code)
+							if (res.code == 0) {
+								// alert(GetQueryString('id'))
+								$.ajax({
+									url: '/redpack/get-redpack',
+									type: 'post',
+									async: false,
+									data: 'redpackId=' + GetQueryString('id'),
+									success: function(res) {
+										// alert('5555')
+										if (res.code == 0) {
+											// alert(res.data.money)
+											location.href = 'dragonBoatFestival.html?money=' + res.data.money
+										} else {
+											$('.popwindow').css('display','none')
+											alert(res.codeMsg)
+										}
+
+									}
+								})
+							} else {
+								$('.popwindow').css('display','none')
+								alert(res.codeMsg)
+							}
+
+						}
+					})
+				});
+				// location.href='dragonBoatFestival.html'
+			})
+		</script>
+
+	</body>
+</html>
